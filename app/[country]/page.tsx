@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { countries, countryOrder } from "../lib/tax-engines";
 import TaxCalculator from "../components/TaxCalculator";
+import ReverseCalculator from "../components/ReverseCalculator";
 
 interface Props {
   params: Promise<{ country: string }>;
@@ -85,6 +86,23 @@ export default async function CountryPage({ params }: Props) {
           <TaxCalculator countryCode={country.code} />
         </Suspense>
 
+        {/* Reverse calculator */}
+        <section className="mt-12">
+          <Suspense fallback={<div className="h-48 animate-pulse bg-gray-100 dark:bg-gray-800 rounded-2xl" />}>
+            <ReverseCalculator countryCode={country.code} />
+          </Suspense>
+        </section>
+
+        {/* Compare link */}
+        <div className="mt-8 text-center">
+          <Link
+            href="/compare"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors text-sm font-medium"
+          >
+            Compare {country.name} with other countries &rarr;
+          </Link>
+        </div>
+
         {/* Popular salaries table — great for SEO long-tail keywords */}
         <section className="mt-16">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
@@ -107,7 +125,11 @@ export default async function CountryPage({ params }: Props) {
               <tbody>
                 {salaryTable.map((row) => (
                   <tr key={row.gross} className="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-900/50">
-                    <td className="py-3 px-2 font-medium">{fmt(row.gross, country.currencySymbol)}</td>
+                    <td className="py-3 px-2 font-medium">
+                      <Link href={`/${code}/${row.gross}`} className="text-blue-600 dark:text-blue-400 hover:underline">
+                        {fmt(row.gross, country.currencySymbol)}
+                      </Link>
+                    </td>
                     <td className="py-3 px-2 text-red-600 dark:text-red-400">{fmt(row.tax, country.currencySymbol)}</td>
                     <td className="py-3 px-2 text-green-700 dark:text-green-400 font-medium">{fmt(row.net, country.currencySymbol)}</td>
                     <td className="py-3 px-2 text-green-700 dark:text-green-400">{fmt(row.monthly, country.currencySymbol)}</td>

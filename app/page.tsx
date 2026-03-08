@@ -81,6 +81,15 @@ export default function Home() {
           })}
         </div>
 
+        <div className="mt-8 text-center">
+          <Link
+            href="/compare"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors font-medium"
+          >
+            Compare countries side by side &rarr;
+          </Link>
+        </div>
+
         {/* How it works */}
         <section className="mt-20">
           <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-8">
