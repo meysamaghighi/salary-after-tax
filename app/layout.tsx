@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -17,6 +18,9 @@ export const metadata: Metadata = {
   description:
     "Free salary after tax calculator. See your take-home pay instantly for the US, UK, and Canada.",
   metadataBase: new URL("https://salary-after-tax.vercel.app"),
+  other: {
+    "google-adsense-account": "ca-pub-2621005924235240",
+  },
 };
 
 export default function RootLayout({
@@ -30,6 +34,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2621005924235240"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
