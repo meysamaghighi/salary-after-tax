@@ -2,15 +2,12 @@
 
 import { useState } from "react";
 import { countries, countryOrder } from "../lib/tax-engines";
+import Flag from "./Flag";
 
 function fmt(amount: number, symbol: string): string {
   return `${symbol}${amount.toLocaleString("en-US")}`;
 }
 
-function flagEmoji(countryCode: string): string {
-  const codePoints = countryCode.toUpperCase().split("").map((c) => 0x1f1e6 + c.charCodeAt(0) - 65);
-  return String.fromCodePoint(...codePoints);
-}
 
 export default function CompareCalculator() {
   const [country1, setCountry1] = useState("us");
@@ -69,7 +66,7 @@ export default function CompareCalculator() {
           {/* Country 1 */}
           <div className="space-y-3">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white text-center">
-              {flagEmoji(c1.flag)} {c1.name}
+              <Flag code={c1.flag} /> {c1.name}
             </h3>
             <CompareCard label="Gross" value={fmt(amount, c1.currencySymbol)} />
             <CompareCard label={c1.taxLabels.federal} value={fmt(r1.federalTax, c1.currencySymbol)} negative />
@@ -85,7 +82,7 @@ export default function CompareCalculator() {
           {/* Country 2 */}
           <div className="space-y-3">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white text-center">
-              {flagEmoji(c2.flag)} {c2.name}
+              <Flag code={c2.flag} /> {c2.name}
             </h3>
             <CompareCard label="Gross" value={fmt(amount, c2.currencySymbol)} />
             <CompareCard label={c2.taxLabels.federal} value={fmt(r2.federalTax, c2.currencySymbol)} negative />

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { countries, countryOrder } from "./lib/tax-engines";
+import Flag from "./components/Flag";
 
 export const metadata: Metadata = {
   title: "Salary After Tax Calculator 2025 | Free Take-Home Pay Calculator",
@@ -29,13 +30,6 @@ export const metadata: Metadata = {
   },
 };
 
-function flagEmoji(countryCode: string): string {
-  const codePoints = countryCode
-    .toUpperCase()
-    .split("")
-    .map((char) => 0x1f1e6 + char.charCodeAt(0) - 65);
-  return String.fromCodePoint(...codePoints);
-}
 
 function fmt(amount: number, symbol: string): string {
   return `${symbol}${amount.toLocaleString("en-US")}`;
@@ -63,7 +57,7 @@ export default function Home() {
                 href={`/${c.code}`}
                 className="group flex flex-col items-center gap-2 p-5 sm:p-6 bg-white dark:bg-gray-900 rounded-2xl shadow-md hover:shadow-xl transition-all hover:-translate-y-1 border border-gray-100 dark:border-gray-800"
               >
-                <span className="text-3xl sm:text-4xl">{flagEmoji(c.flag)}</span>
+                <Flag code={c.flag} size={40} />
                 <span className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   {c.name}
                 </span>
@@ -127,7 +121,7 @@ export default function Home() {
                   return (
                     <tr key={c.code} className="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-900/50">
                       <td className="py-3 px-2 font-medium">
-                        {flagEmoji(c.flag)} {c.name}
+                        <Flag code={c.flag} /> {c.name}
                       </td>
                       <td className="py-3 px-2">{fmt(c.defaultSalary, c.currencySymbol)}</td>
                       <td className="py-3 px-2 text-green-700 dark:text-green-400 font-medium">{fmt(r.netAnnual, c.currencySymbol)}</td>

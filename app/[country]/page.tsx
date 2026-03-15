@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { countries, countryOrder } from "../lib/tax-engines";
+import Flag from "../components/Flag";
 import TaxCalculator from "../components/TaxCalculator";
 import ReverseCalculator from "../components/ReverseCalculator";
 
@@ -39,13 +40,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-function flagEmoji(countryCode: string): string {
-  const codePoints = countryCode
-    .toUpperCase()
-    .split("")
-    .map((char) => 0x1f1e6 + char.charCodeAt(0) - 65);
-  return String.fromCodePoint(...codePoints);
-}
 
 function fmt(amount: number, symbol: string): string {
   return `${symbol}${amount.toLocaleString("en-US")}`;
@@ -76,7 +70,7 @@ export default async function CountryPage({ params }: Props) {
         </Link>
 
         <h1 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 dark:text-white mb-2">
-          {flagEmoji(country.flag)} {country.name} Salary After Tax Calculator
+          <Flag code={country.flag} size={32} className="mr-2" /> {country.name} Salary After Tax Calculator
         </h1>
         <p className="text-center text-gray-500 dark:text-gray-400 mb-8">
           {country.taxYear} tax rates &middot; {country.currency}
@@ -174,7 +168,7 @@ export default async function CountryPage({ params }: Props) {
                   href={`/${c}`}
                   className="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-700 text-sm text-gray-600 dark:text-gray-400 hover:border-blue-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 >
-                  {flagEmoji(other.flag)} {other.name}
+                  <Flag code={other.flag} /> {other.name}
                 </Link>
               );
             })}

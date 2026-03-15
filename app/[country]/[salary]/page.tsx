@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import { countries, countryOrder } from "../../lib/tax-engines";
+import Flag from "../../components/Flag";
 import TaxCalculator from "../../components/TaxCalculator";
 
 interface Props {
@@ -45,10 +46,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-function flagEmoji(countryCode: string): string {
-  const codePoints = countryCode.toUpperCase().split("").map((c) => 0x1f1e6 + c.charCodeAt(0) - 65);
-  return String.fromCodePoint(...codePoints);
-}
 
 function fmt(amount: number, symbol: string): string {
   return `${symbol}${amount.toLocaleString("en-US")}`;
@@ -82,7 +79,7 @@ export default async function SalaryPage({ params }: Props) {
         </div>
 
         <h1 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 dark:text-white mb-3">
-          {flagEmoji(country.flag)} {fmt(salary, sym)} Salary After Tax in {country.name}
+          <Flag code={country.flag} size={32} className="mr-2" /> {fmt(salary, sym)} Salary After Tax in {country.name}
         </h1>
 
         {/* Key answer right at the top — Google featured snippet target */}
@@ -175,7 +172,7 @@ export default async function SalaryPage({ params }: Props) {
                   href={`/${c}`}
                   className="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-700 text-sm text-gray-600 dark:text-gray-400 hover:border-blue-300 hover:text-blue-600 transition-colors"
                 >
-                  {flagEmoji(other.flag)} {other.name}
+                  <Flag code={other.flag} /> {other.name}
                 </Link>
               );
             })}

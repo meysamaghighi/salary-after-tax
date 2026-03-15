@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { countries, countryOrder } from "../lib/tax-engines";
 import CompareCalculator from "../components/CompareCalculator";
+import Flag from "../components/Flag";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
@@ -19,10 +20,6 @@ export const metadata: Metadata = {
   ],
 };
 
-function flagEmoji(countryCode: string): string {
-  const codePoints = countryCode.toUpperCase().split("").map((c) => 0x1f1e6 + c.charCodeAt(0) - 65);
-  return String.fromCodePoint(...codePoints);
-}
 
 function fmt(amount: number, symbol: string): string {
   return `${symbol}${amount.toLocaleString("en-US")}`;
@@ -77,7 +74,7 @@ export default function ComparePage() {
                     <tr key={code} className="border-b border-gray-100 dark:border-gray-800">
                       <td className="py-3 px-2 font-medium">
                         <Link href={`/${code}`} className="hover:text-blue-600">
-                          {flagEmoji(c.flag)} {c.name}
+                          <Flag code={c.flag} /> {c.name}
                         </Link>
                       </td>
                       <td className="py-3 px-2">{fmt(c.defaultSalary, c.currencySymbol)}</td>
