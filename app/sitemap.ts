@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { countries, countryOrder } from "./lib/tax-engines";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://salary-after-tax.vercel.app";
+  const base = "https://salaryaftertax.net";
 
   const salaryPages: MetadataRoute.Sitemap = [];
   for (const code of countryOrder) {

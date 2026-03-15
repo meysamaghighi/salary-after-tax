@@ -194,7 +194,7 @@ export default function Home() {
             "@type": "WebApplication",
             name: "Salary After Tax Calculator",
             description: "Free salary after tax calculator for 9 countries. See your take-home pay instantly.",
-            url: "https://salary-after-tax.vercel.app",
+            url: "https://salaryaftertax.net",
             applicationCategory: "FinanceApplication",
             operatingSystem: "Any",
             offers: {

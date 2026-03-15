@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://salary-after-tax.vercel.app/sitemap.xml",
+    sitemap: "https://salaryaftertax.net/sitemap.xml",
   };
 }

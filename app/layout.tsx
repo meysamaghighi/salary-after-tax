@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "Salary After Tax Calculator | US, UK, Canada",
   description:
     "Free salary after tax calculator. See your take-home pay instantly for the US, UK, and Canada.",
-  metadataBase: new URL("https://salary-after-tax.vercel.app"),
+  metadataBase: new URL("https://salaryaftertax.net"),
   other: {
     "google-adsense-account": "ca-pub-2621005924235240",
   },
