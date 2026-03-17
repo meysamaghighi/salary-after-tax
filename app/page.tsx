@@ -4,9 +4,9 @@ import { countries, countryOrder } from "./lib/tax-engines";
 import Flag from "./components/Flag";
 
 export const metadata: Metadata = {
-  title: "Salary After Tax Calculator 2025 | Free Take-Home Pay Calculator",
+  title: "Salary After Tax Calculator 2025 | Take-Home Pay",
   description:
-    "Free salary after tax calculator for 9 countries: US, UK, Canada, Australia, Germany, India, Ireland, Sweden, Netherlands. See your take-home pay instantly with tax breakdown, effective rate, and monthly net pay.",
+    "Free salary after tax calculator for 9 countries. See your take-home pay instantly with tax breakdown and effective rate.",
   keywords: [
     "salary after tax",
     "take home pay calculator",
