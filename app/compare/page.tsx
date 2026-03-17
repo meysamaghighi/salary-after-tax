@@ -6,9 +6,9 @@ import Flag from "../components/Flag";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Compare Salary After Tax Between Countries | Side-by-Side Tax Comparison",
+  title: "Compare Salary After Tax Between Countries | CashCalcs",
   description:
-    "Compare take-home pay between countries side by side. See how much you'd keep in the US vs UK vs Canada vs Australia and more. Free tax comparison tool.",
+    "Compare take-home pay between countries side by side. See how taxes differ across the US, UK, Canada, Australia, and more.",
   keywords: [
     "compare tax between countries",
     "salary comparison countries",
@@ -18,6 +18,11 @@ export const metadata: Metadata = {
     "which country has lowest tax",
     "compare income tax",
   ],
+  openGraph: {
+    title: "Compare Salary After Tax Between Countries",
+    description: "Free side-by-side salary comparison across 9 countries.",
+    type: "website",
+  },
 };
 
 
@@ -111,6 +116,22 @@ export default function ComparePage() {
       <footer className="text-center text-sm text-gray-400 py-8 border-t border-gray-100 dark:border-gray-800 mt-16">
         <p>For estimation purposes only.</p>
       </footer>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "Salary Tax Comparison Tool",
+            description: "Compare take-home pay and tax rates between 9 countries side by side.",
+            url: "https://salaryaftertax.net/compare",
+            applicationCategory: "FinanceApplication",
+            operatingSystem: "Any",
+            offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+          }),
+        }}
+      />
     </div>
   );
 }
