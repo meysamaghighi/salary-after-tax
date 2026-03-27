@@ -11,6 +11,8 @@ interface Props {
   params: Promise<{ country: string }>;
 }
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return Object.keys(countries).map((code) => ({ country: code }));
 }

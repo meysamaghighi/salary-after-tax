@@ -10,6 +10,8 @@ interface Props {
   params: Promise<{ country: string; salary: string }>;
 }
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const params: { country: string; salary: string }[] = [];
   for (const code of Object.keys(countries)) {
