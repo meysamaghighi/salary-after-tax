@@ -226,6 +226,8 @@ export default async function CountryPage({ params }: Props) {
             </span>
           ))}
           <Link href="/" className="hover:text-gray-600 dark:hover:text-gray-300">More countries</Link>
+          {" "}&middot;{" "}
+          <Link href="/about" className="hover:text-gray-600 dark:hover:text-gray-300">About</Link>
         </p>
       </footer>
 

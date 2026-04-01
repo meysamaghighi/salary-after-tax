@@ -176,6 +176,13 @@ export default function Home() {
               {c.name}
             </Link>
           ))}
+          <span className="text-gray-300 dark:text-gray-700">&middot;</span>
+          <Link
+            href="/about"
+            className="hover:text-gray-600 dark:hover:text-gray-300"
+          >
+            About
+          </Link>
         </div>
       </footer>
 

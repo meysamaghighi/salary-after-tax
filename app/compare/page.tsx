@@ -115,6 +115,14 @@ export default function ComparePage() {
 
       <footer className="text-center text-sm text-gray-400 py-8 border-t border-gray-100 dark:border-gray-800 mt-16">
         <p>For estimation purposes only.</p>
+        <div className="mt-3">
+          <Link
+            href="/about"
+            className="hover:text-gray-600 dark:hover:text-gray-300"
+          >
+            About
+          </Link>
+        </div>
       </footer>
 
       <script
