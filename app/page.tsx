@@ -28,6 +28,9 @@ export const metadata: Metadata = {
     description: "Free take-home pay calculator for 9 countries. Instant tax breakdown.",
     type: "website",
   },
+  alternates: {
+    canonical: "/",
+  },
 };
 
 

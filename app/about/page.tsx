@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     description: "Free, privacy-first take-home pay calculator for 9 countries.",
     type: "website",
   },
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 export default function AboutPage() {

@@ -45,6 +45,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${fmtNum(salary)} After Tax in ${country.name}`,
       description: `Take home ${fmtNum(r.netAnnual)}/year (${fmtNum(r.netMonthly)}/month). Tax: ${r.effectiveRate}%.`,
     },
+    alternates: {
+      canonical: `/${code}/${salary}`,
+    },
   };
 }
 

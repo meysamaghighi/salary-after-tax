@@ -23,6 +23,9 @@ export const metadata: Metadata = {
     description: "Free side-by-side salary comparison across 9 countries.",
     type: "website",
   },
+  alternates: {
+    canonical: "/compare",
+  },
 };
 
 

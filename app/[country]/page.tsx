@@ -39,6 +39,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${country.name} Salary After Tax Calculator ${country.taxYear}`,
       description: country.seoDescription,
     },
+    alternates: {
+      canonical: `/${code}`,
+    },
   };
 }
 
